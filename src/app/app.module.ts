@@ -18,11 +18,14 @@ import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
+import {OrderItemNewComponent} from "./order";
+import {HeadingService} from "./shared/services/heading.service";
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  HeadingService
 ];
 
 type StoreType = {
@@ -41,7 +44,8 @@ type StoreType = {
     About,
     Home,
     NoContent,
-    XLarge
+    XLarge,
+    OrderItemNewComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
