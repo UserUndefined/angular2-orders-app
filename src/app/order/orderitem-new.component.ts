@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import {HeadingService} from "../shared/services/heading.service";
+import * as moment from 'moment';
 
 @Component({
   selector: 'orderitem-new',
   templateUrl: './orderitem-new.component.html'
 })
 export class OrderItemNewComponent {
+
+  dateNow: string;
 
   order =  {
     customer: {name: 'Test Name'},
@@ -32,6 +35,8 @@ export class OrderItemNewComponent {
   areas: {};
 */
   constructor(private headingService: HeadingService) {
+      this.dateNow = moment().format('MMMM Do YYYY, h:mm:ss a');
+      console.info(this.dateNow);
   }
 
   ngOnInit() {
