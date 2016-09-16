@@ -20,12 +20,16 @@ import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
 import {OrderItemNewComponent} from "./order";
 import {HeadingService} from "./shared/services/heading.service";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+//import {SELECT_DIRECTIVES} from '../../node_modules/ng2-select';
+//import * as moment from '../../node_modules/moment';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   HeadingService
+  //SELECT_DIRECTIVES
 ];
 
 type StoreType = {
@@ -51,7 +55,8 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES, { useHash: true }),
+    NgbModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
