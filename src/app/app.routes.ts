@@ -2,9 +2,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
+import { OrderItemNewComponent } from "./order";
 
 import { DataResolver } from './app.resolver';
-import { OrderItemNewComponent } from "./order";
 
 
 export const ROUTES: Routes = [

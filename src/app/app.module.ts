@@ -21,7 +21,6 @@ import { XLarge } from './home/x-large';
 import {OrderItemNewComponent} from "./order";
 import {HeadingService} from "./shared/services/heading.service";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-//import {SELECT_DIRECTIVES} from '../../node_modules/ng2-select';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -55,6 +54,7 @@ type StoreType = {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
+    SelectModule,
     NgbModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
