@@ -8,12 +8,12 @@ export interface Heading {
 export class HeadingService {
 
   private items: Heading[] = [
-    {name: 'Accountants'},
-    {name: 'Builders'},
-    {name: 'Candlestick Makers'},
-    {name: 'Dentists'},
-    {name: 'Fishermen'},
-    {name: 'Plumbers'}
+    {value: 'Accountants', label: 'Accountants'},
+    {value: 'Builders',label: 'Builders'},
+    {value: 'Candlestick Makers',label: 'Candlestick Makers'},
+    {value: 'Dentists',label: 'Dentists'},
+    {value: 'Fishermen',label: 'Fishermen'},
+    {value: 'Plumbers',label: 'Plumbers'}
   ];
 
   constructor() { }

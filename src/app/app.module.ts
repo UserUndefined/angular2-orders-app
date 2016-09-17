@@ -21,6 +21,7 @@ import { XLarge } from './home/x-large';
 import {OrderItemNewComponent} from "./order";
 import {HeadingService} from "./shared/services/heading.service";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {SelectModule} from 'angular2-select';
 
 // Application wide providers
 const APP_PROVIDERS = [

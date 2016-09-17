@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-//import {HeadingService} from "../shared/services/heading.service";
+import {HeadingService} from "../shared/services/heading.service";
 import * as moment from 'moment';
 //import {SELECT_DIRECTIVES} from 'ng2-select/ng2-select';
 //import {SelectModule} from 'angular2-select';
@@ -36,24 +36,11 @@ export class OrderItemNewComponent {
 
   areas: {};
 */
-  constructor() {
-//    constructor(private headingService: HeadingService) {
+//  constructor() {
+    constructor(private headingService: HeadingService) {
       this.dateNow = moment().format('MMMM Do YYYY, h:mm:ss a');
       console.info(this.dateNow);
-    this.options = [
-      {
-        value: 'a',
-        label: 'Alpha'
-      },
-      {
-        value: 'b',
-        label: 'Beta'
-      },
-      {
-        value: 'c',
-        label: 'Gamma'
-      }
-    ];
+    this.options = headingService.getHeadings();
   }
 
   ngOnInit() {
