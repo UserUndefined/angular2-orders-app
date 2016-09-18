@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 export interface Heading {
-  name?: string;
+  value?: string;
+  label?: string;
 }
 
 @Injectable()

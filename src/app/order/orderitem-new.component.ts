@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HeadingService} from "../shared/services/heading.service";
+import {HeadingService, Heading} from "../shared/services/heading.service";
 import * as moment from 'moment';
 //import {SELECT_DIRECTIVES} from 'ng2-select/ng2-select';
 //import {SelectModule} from 'angular2-select';
@@ -11,10 +11,12 @@ import * as moment from 'moment';
 export class OrderItemNewComponent {
 
   dateNow: string;
+  heading: {value: 'Accountants', label: 'Accountants'};
 
   order =  {
     customer: {name: 'Test Name'},
-    totalValue: 100
+    totalValue: 100,
+    heading: {value: '', label: ''}
   };
 
   // orderItemIndex: 0;

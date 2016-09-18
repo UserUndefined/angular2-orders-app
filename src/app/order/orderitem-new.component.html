@@ -6,23 +6,22 @@
       </div>
       <form name="newServiceForm" class="form-horizontal">
         <div class="form-group row">
-          <div style="display:inline-block; min-height:290px;">
-            <div style="width: 300px; margin-bottom: 20px;">
-              <h3>Select a single city</h3>
-              <!--ng-select></ng-select-->
-              <!--ng-select [allowClear]="true"
-                         [items]="items"
-                         [disabled]="disabled"
-                         (data)="refreshValue($event)"
-                         (selected)="selected($event)"
-                         (removed)="removed($event)"
-                         (typed)="typed($event)"
-                         placeholder="No city selected">
-              </ng-select-->
-              <ng-select
-                [options]="options">
-              </ng-select>
-            </div>
+          <div class="col-sm-3">
+            <ng-select
+              [options]="options"
+              placeholder="Select a product"
+              name="areaSelect"
+              [(ngModel)]="order.heading"
+            >
+            </ng-select>
+            <p>{{order.heading}}</p>
+            <!--ui-select ng-model="newItem.product" theme="selectize" title="Select a Product">
+              <ui-select-match placeholder="Select a Product">{{$select.selected.product.name}}</ui-select-match>
+              <ui-select-choices repeat="serviceProduct.product as serviceProduct in serviceProducts | filter: $select.search">
+                <span ng-bind-html="serviceProduct.product.name | highlight: $select.search"></span>
+                <small ng-bind-html="serviceProduct.product.code | highlight: $select.search"></small>
+              </ui-select-choices>
+            </ui-select-->
           </div>
           <!--div class="col-sm-3">
             <ui-select ng-model="newItem.product" theme="selectize" title="Select a Product">
