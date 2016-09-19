@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 export class Heading {
   constructor(public value: string, public label: string){}
@@ -6,30 +8,20 @@ export class Heading {
 
 @Injectable()
 export class HeadingService {
-/*
-  private items: Heading[] = [
-    {value: 'Accountants', label: 'Accountants'},
-    {value: 'Builders',label: 'Builders'},
-    {value: 'Candlestick Makers',label: 'Candlestick Makers'},
-    {value: 'Dentists',label: 'Dentists'},
-    {value: 'Fishermen',label: 'Fishermen'},
-    {value: 'Plumbers',label: 'Plumbers'}
-  ];
-*/
-  private items: Heading[];
 
-  constructor() {
-    this.items = [
-      new Heading('Accountants', 'Accountants'),
-      new Heading('Builders', 'Builders'),
-      new Heading('Candlestick Makers', 'Candlestick Makers'),
-      new Heading('Dentists', 'Dentists'),
-      new Heading('Fishermen', 'Fishermen'),
-      new Heading('Plumbers', 'Plumbers')
-    ];
+  constructor(private http: Http) {
+  }
+
+  httpErrorHandler(error: Response){
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
   }
 
   getHeadings() {
-    return this.items;
+    return this.http.get('https://generic-receiver-api.herokuapp.com/headings/list')
+      .map((res: Response) => <Heading[]>res.json())
+      .do(data => console.log(data))
+      .catch(this.httpErrorHandler)
+      ;
   }
 }
