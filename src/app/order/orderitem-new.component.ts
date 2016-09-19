@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HeadingService, Heading} from "../shared/services/heading.service";
+import {Area, AreaService, Product, ProductService, HeadingService, Heading} from "../shared/services";
 import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 
@@ -12,6 +12,10 @@ export class OrderItemNewComponent implements OnInit {
   dateNow: string;
 
   options: Observable<Heading>;
+
+  areas: Observable<Area>;
+
+  products: Observable<Product>;
 
   order =  {
     customer: {name: 'Test Name'},
@@ -40,12 +44,14 @@ export class OrderItemNewComponent implements OnInit {
 
   areas: {};
 */
-  constructor(private headingService: HeadingService) {
+  constructor(private headingService: HeadingService, private areaService: AreaService, private productService: ProductService) {
   }
 
   ngOnInit() {
     // this.newItem.itemIndex = this.orderItemIndex;
     this.getHeadings();
+    this.getAreas();
+    this.getProducts();
     this.dateNow = moment().format('MMMM Do YYYY, h:mm:ss a');
     console.info(this.dateNow);
     this.options = this.headingService.getHeadings();
@@ -53,6 +59,20 @@ export class OrderItemNewComponent implements OnInit {
 
   getHeadings(){
     this.headingService.getHeadings()
+      .subscribe(options => this.options = options,
+        error => this.errorMessage = <any>error
+      );
+  }
+
+  getAreas(){
+    this.areaService.getAreas()
+      .subscribe(options => this.options = options,
+        error => this.errorMessage = <any>error
+      );
+  }
+
+  getProducts(){
+    this.productService.getProducts()
       .subscribe(options => this.options = options,
         error => this.errorMessage = <any>error
       );

@@ -19,7 +19,7 @@ import { About } from './about';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
 import {OrderItemNewComponent} from "./order";
-import {HeadingService} from "./shared/services/heading.service";
+import {HeadingService, AreaService, ProductService} from "./shared/services";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SelectModule} from 'angular2-select';
 
@@ -27,8 +27,9 @@ import {SelectModule} from 'angular2-select';
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  HeadingService
-  //SELECT_DIRECTIVES
+  HeadingService,
+  AreaService,
+  ProductService
 ];
 
 type StoreType = {
