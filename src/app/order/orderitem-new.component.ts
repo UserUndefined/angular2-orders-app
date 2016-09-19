@@ -1,22 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {HeadingService, Heading} from "../shared/services/heading.service";
 import * as moment from 'moment';
-//import {SELECT_DIRECTIVES} from 'ng2-select/ng2-select';
-//import {SelectModule} from 'angular2-select';
 
 @Component({
   selector: 'orderitem-new',
   templateUrl: './orderitem-new.component.html'
 })
-export class OrderItemNewComponent {
+export class OrderItemNewComponent implements OnInit {
 
   dateNow: string;
-  heading: {value: 'Accountants', label: 'Accountants'};
+
+  options = [];
 
   order =  {
     customer: {name: 'Test Name'},
     totalValue: 100,
-    heading: {value: '', label: ''}
+    heading: new Heading('','')
   };
 
   // orderItemIndex: 0;
@@ -38,63 +37,13 @@ export class OrderItemNewComponent {
 
   areas: {};
 */
-//  constructor() {
-    constructor(private headingService: HeadingService) {
-      this.dateNow = moment().format('MMMM Do YYYY, h:mm:ss a');
-      console.info(this.dateNow);
-    this.options = headingService.getHeadings();
+  constructor(private headingService: HeadingService) {
   }
 
   ngOnInit() {
-
     // this.newItem.itemIndex = this.orderItemIndex;
-    // this.areas = this.areaService.getAreas();
-    // this.serviceProducts = this.serviceProductService.getServiceProducts();
-    // const id = this.route.snapshot.params['id'];
-
-    // this.questionService.findOne(id).subscribe(question => {
-    //  this.question = question;
-    // });
+    this.dateNow = moment().format('MMMM Do YYYY, h:mm:ss a');
+    console.info(this.dateNow);
+    this.options = this.headingService.getHeadings();
   }
-  public items:Array<string> = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
-    'Berlin', 'Birmingham', 'Bradford', 'Bremen', 'Brussels', 'Bucharest',
-    'Budapest', 'Cologne', 'Copenhagen', 'Dortmund', 'Dresden', 'Dublin',
-    'Düsseldorf', 'Essen', 'Frankfurt', 'Genoa', 'Glasgow', 'Gothenburg',
-    'Hamburg', 'Hannover', 'Helsinki', 'Kraków', 'Leeds', 'Leipzig', 'Lisbon',
-    'London', 'Madrid', 'Manchester', 'Marseille', 'Milan', 'Munich', 'Málaga',
-    'Naples', 'Palermo', 'Paris', 'Poznań', 'Prague', 'Riga', 'Rome',
-    'Rotterdam', 'Seville', 'Sheffield', 'Sofia', 'Stockholm', 'Stuttgart',
-    'The Hague', 'Turin', 'Valencia', 'Vienna', 'Vilnius', 'Warsaw', 'Wrocław',
-    'Zagreb', 'Zaragoza', 'Łódź'];
-
-  private value:any = {};
-  private _disabledV:string = '0';
-  private disabled:boolean = false;
-
-  private get disabledV():string {
-    return this._disabledV;
-  }
-
-  private set disabledV(value:string) {
-    this._disabledV = value;
-    this.disabled = this._disabledV === '1';
-  }
-
-  public selected(value:any):void {
-    console.log('Selected value is: ', value);
-  }
-
-  public removed(value:any):void {
-    console.log('Removed value is: ', value);
-  }
-
-  public typed(value:any):void {
-    console.log('New search input: ', value);
-  }
-
-  public refreshValue(value:any):void {
-    this.value = value;
-  }
-
-  options = [];
 }
