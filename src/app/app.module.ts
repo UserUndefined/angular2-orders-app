@@ -9,7 +9,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import { ROUTES, appRoutingProviders } from './app.routes';
 // App is our top level component
 import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
@@ -18,10 +18,9 @@ import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
-import {OrderItemNewComponent} from "./order";
+import {OrderModule} from "./order";
 import {HeadingService, AreaService, ProductService} from "./shared/services";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {SelectModule} from 'angular2-select';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -29,7 +28,8 @@ const APP_PROVIDERS = [
   AppState,
   HeadingService,
   AreaService,
-  ProductService
+  ProductService,
+  appRoutingProviders
 ];
 
 type StoreType = {
@@ -48,16 +48,15 @@ type StoreType = {
     About,
     Home,
     NoContent,
-    XLarge,
-    OrderItemNewComponent
+    XLarge
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true }),
-    SelectModule,
-    NgbModule
+    ROUTES,
+    NgbModule,
+    OrderModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
