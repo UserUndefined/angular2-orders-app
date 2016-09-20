@@ -11,11 +11,11 @@ export class OrderItemNewComponent implements OnInit {
 
   dateNow: string;
 
-  options: Observable<Heading>;
+  headings = new Observable<Heading>();
 
-  areas: Observable<Area>;
+  areas = new Observable<Area>();
 
-  products: Observable<Product>;
+  products = new Observable<Product>();
 
   order =  {
     customer: {name: 'Test Name'},
@@ -24,6 +24,8 @@ export class OrderItemNewComponent implements OnInit {
   };
 
   errorMessage: string;
+
+  newItem: any;
 
   // orderItemIndex: 0;
 /*
@@ -38,7 +40,6 @@ export class OrderItemNewComponent implements OnInit {
 
   orderItemsStatus: orderItemsStatus;
 
-  newItem: {itemIndex: 0};
 
   serviceProducts: {};
 
@@ -54,27 +55,31 @@ export class OrderItemNewComponent implements OnInit {
     this.getProducts();
     this.dateNow = moment().format('MMMM Do YYYY, h:mm:ss a');
     console.info(this.dateNow);
-    this.options = this.headingService.getHeadings();
+    this.newItem = {itemIndex: 0};
   }
 
   getHeadings(){
     this.headingService.getHeadings()
-      .subscribe(options => this.options = options,
+      .subscribe(options => this.headings = options,
         error => this.errorMessage = <any>error
       );
   }
 
   getAreas(){
     this.areaService.getAreas()
-      .subscribe(options => this.options = options,
+      .subscribe(options => this.areas = options,
         error => this.errorMessage = <any>error
       );
   }
 
   getProducts(){
     this.productService.getProducts()
-      .subscribe(options => this.options = options,
+      .subscribe(options => this.products = options,
         error => this.errorMessage = <any>error
       );
+  }
+
+  addNewService(event){
+    console.info(JSON.stringify(this.newItem));
   }
 }

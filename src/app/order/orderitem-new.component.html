@@ -8,51 +8,39 @@
         <div class="form-group row">
           <div class="col-sm-3">
             <ng-select
-              [options]="options"
+              [options]="products"
               placeholder="Select a product"
-              name="areaSelect"
-              [(ngModel)]="order.heading"
+              name="productSelect"
+              [(ngModel)]="newItem.product"
             >
             </ng-select>
-            <p>{{order.heading}}</p>
+            <p>{{newItem.product}}</p>
             <p>{{errorMessage}}</p>
-            <!--ui-select ng-model="newItem.product" theme="selectize" title="Select a Product">
-              <ui-select-match placeholder="Select a Product">{{$select.selected.product.name}}</ui-select-match>
-              <ui-select-choices repeat="serviceProduct.product as serviceProduct in serviceProducts | filter: $select.search">
-                <span ng-bind-html="serviceProduct.product.name | highlight: $select.search"></span>
-                <small ng-bind-html="serviceProduct.product.code | highlight: $select.search"></small>
-              </ui-select-choices>
-            </ui-select-->
           </div>
-          <!--div class="col-sm-3">
-            <ui-select ng-model="newItem.product" theme="selectize" title="Select a Product">
-              <ui-select-match placeholder="Select a Product">{{$select.selected.product.name}}</ui-select-match>
-              <ui-select-choices repeat="serviceProduct.product as serviceProduct in serviceProducts | filter: $select.search">
-                <span ng-bind-html="serviceProduct.product.name | highlight: $select.search"></span>
-                <small ng-bind-html="serviceProduct.product.code | highlight: $select.search"></small>
-              </ui-select-choices>
-            </ui-select>
-          </div-->
-          <!--div class="col-sm-3">
-            <ui-select ng-model="newItem.area" theme="selectize" title="Select an Area">
-              <ui-select-match placeholder="Select an Area">{{$select.selected.name}}</ui-select-match>
-              <ui-select-choices repeat="area in areas | filter: $select.search">
-                <span ng-bind-html="area.name | highlight: $select.search"></span>
-                <small ng-bind-html="area.code | highlight: $select.search"></small>
-              </ui-select-choices>
-            </ui-select>
-          </div-->
-          <!--div class="col-sm-3">
-            <ui-select ng-model="newItem.heading" theme="selectize" title="Select a Heading">
-              <ui-select-match placeholder="Select a Heading">{{$select.selected.name}}</ui-select-match>
-              <ui-select-choices repeat="heading in headings | filter: $select.search">
-                <span ng-bind-html="heading.name | highlight: $select.search"></span>
-                <small ng-bind-html="heading.code | highlight: $select.search"></small>
-              </ui-select-choices>
-            </ui-select>
-          </div-->
+          <div class="col-sm-3">
+            <ng-select
+              [options]="areas"
+              placeholder="Select an area"
+              name="areaSelect"
+              [(ngModel)]="newItem.area"
+            >
+            </ng-select>
+            <p>{{newItem.area}}</p>
+            <p>{{errorMessage}}</p>
+          </div>
+          <div class="col-sm-3">
+            <ng-select
+              [options]="headings"
+              placeholder="Select a heading"
+              name="headingSelect"
+              [(ngModel)]="newItem.heading"
+            >
+            </ng-select>
+            <p>{{newItem.heading}}</p>
+            <p>{{errorMessage}}</p>
+          </div>
           <div class="btn-group col-sm-3">
-            <button id="single-button-new-item" type="button" class="btn btn-primary" ng-click="addNewService()">Add</button>
+            <button id="single-button-new-item" type="button" class="btn btn-primary" (click)="addNewService()">Add</button>
           </div>
         </div>
       </form>
