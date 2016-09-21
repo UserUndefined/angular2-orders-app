@@ -19,16 +19,12 @@ import { About } from './about';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
 import {OrderModule} from "./order";
-import {HeadingService, AreaService, ProductService} from "./shared/services";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  HeadingService,
-  AreaService,
-  ProductService,
   appRoutingProviders
 ];
 

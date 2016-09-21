@@ -4,9 +4,7 @@ import {FormsModule} from '@angular/forms'
 
 import {OrderItemNewComponent} from "./orderitem-new.component";
 
-import {AreaService} from "../shared/services/area.service";
-import {HeadingService} from "../shared/services/heading.service";
-import {ProductService} from "../shared/services/product.service";
+import {AreaService, ProductService, HeadingService} from "../shared/services";
 
 import { orderRouting } from './order.routing';
 
