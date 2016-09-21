@@ -11,6 +11,7 @@ import {AreaService, ProductService, HeadingService} from "../shared/services";
 import { orderRouting } from './order.routing';
 
 import {SelectModule} from 'angular2-select';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {SelectModule} from 'angular2-select';
     CommonModule,
     FormsModule,
     SelectModule,
-    orderRouting
+    orderRouting,
+    NgbModule,
   ],
   providers: [
     AreaService,
