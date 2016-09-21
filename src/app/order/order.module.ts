@@ -2,7 +2,9 @@ import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 import {FormsModule} from '@angular/forms'
 
+import {OrderComponent} from "./order.component";
 import {OrderItemNewComponent} from "./orderitem-new.component";
+import {OrderItemListComponent} from "./orderitem-list.component";
 
 import {AreaService, ProductService, HeadingService} from "../shared/services";
 
@@ -12,7 +14,9 @@ import {SelectModule} from 'angular2-select';
 
 @NgModule({
   declarations: [
-    OrderItemNewComponent
+    OrderItemNewComponent,
+    OrderItemListComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,

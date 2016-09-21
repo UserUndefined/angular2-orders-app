@@ -1,0 +1,25 @@
+<div>
+  <div layout="column">
+    <!--uib-accordion close-others="{{orderItemsStatus.oneOrderItemAtATime}}">
+      <div uib-accordion-group class="panel-default" ng-repeat="service in order.services">
+        <uib-accordion-heading>
+          {{service.product.name}} {{service.area.name}} {{service.heading.name}} £{{service.product.price}}<i class="pull-right glyphicon glyphicon-pencil"></i>
+        </uib-accordion-heading>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" class="form-control" placeholder="Company Name" ng-model="service.advert.name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="text" class="form-control" placeholder="Telephone" ng-model="service.advert.telephone">
+        </div>
+        <div class="form-group">
+          <label>Url</label>
+          <input type="text" class="form-control" placeholder="URL" ng-model="service.advert.url">
+        </div>
+      </div>
+    </uib-accordion-->
+    <p>Total: £{{order.totalValue}}</p>
+    <button ng-disabled="order.totalValue == 0" class="btn btn-primary btn-block" (click)="saveNewOrder()">Save Order</button>
+  </div>
+</div>

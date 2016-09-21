@@ -1,74 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
-      <div>
-        <p>{{order.customer.name}}, {{order.customer.postcode}}</p>
-      </div>
-      <form name="newServiceForm" class="form-horizontal">
-        <div class="form-group row">
-          <div class="col-sm-3">
-            <ng-select
-              [options]="products"
-              placeholder="Select a product"
-              name="productSelect"
-              [(ngModel)]="newItem.product"
-            >
-            </ng-select>
-            <p>{{newItem.product}}</p>
-            <p>{{errorMessage}}</p>
-          </div>
-          <div class="col-sm-3">
-            <ng-select
-              [options]="areas"
-              placeholder="Select an area"
-              name="areaSelect"
-              [(ngModel)]="newItem.area"
-            >
-            </ng-select>
-            <p>{{newItem.area}}</p>
-            <p>{{errorMessage}}</p>
-          </div>
-          <div class="col-sm-3">
-            <ng-select
-              [options]="headings"
-              placeholder="Select a heading"
-              name="headingSelect"
-              [(ngModel)]="newItem.heading"
-            >
-            </ng-select>
-            <p>{{newItem.heading}}</p>
-            <p>{{errorMessage}}</p>
-          </div>
-          <div class="btn-group col-sm-3">
-            <button id="single-button-new-item" type="button" class="btn btn-primary" (click)="addNewService()">Add</button>
-          </div>
-        </div>
-      </form>
-      <p *ngIf="order.totalValue > 0">{{order.totalValue}}</p>
-      <!--div layout="column">
-        <uib-accordion close-others="{{orderItemsStatus.oneOrderItemAtATime}}">
-          <div uib-accordion-group class="panel-default" ng-repeat="service in order.services">
-            <uib-accordion-heading>
-              {{service.product.name}} {{service.area.name}} {{service.heading.name}} £{{service.product.price}}<i class="pull-right glyphicon glyphicon-pencil"></i>
-            </uib-accordion-heading>
-            <div class="form-group">
-              <label>Company Name</label>
-              <input type="text" class="form-control" placeholder="Company Name" ng-model="service.advert.name">
-            </div>
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="text" class="form-control" placeholder="Telephone" ng-model="service.advert.telephone">
-            </div>
-            <div class="form-group">
-              <label>Url</label>
-              <input type="text" class="form-control" placeholder="URL" ng-model="service.advert.url">
-            </div>
-          </div>
-        </uib-accordion>
-        <p>Total: £{{order.totalValue}}</p>
-        <button ng-disabled="order.totalValue == 0" class="btn btn-primary btn-block" ng-click="saveNewOrder()">Save Order</button>
-      </div-->
-    </div>
+<div>
+  <div>
+    <p>{{order.customer.name}}, {{order.customer.postcode}}</p>
   </div>
+  <form name="newServiceForm" class="form-horizontal">
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <ng-select
+          [options]="products"
+          placeholder="Select a product"
+          name="productSelect"
+          [(ngModel)]="newItem.product"
+        >
+        </ng-select>
+        <p>{{newItem.product}}</p>
+        <p>{{errorMessage}}</p>
+      </div>
+      <div class="col-sm-3">
+        <ng-select
+          [options]="areas"
+          placeholder="Select an area"
+          name="areaSelect"
+          [(ngModel)]="newItem.area"
+        >
+        </ng-select>
+        <p>{{newItem.area}}</p>
+        <p>{{errorMessage}}</p>
+      </div>
+      <div class="col-sm-3">
+        <ng-select
+          [options]="headings"
+          placeholder="Select a heading"
+          name="headingSelect"
+          [(ngModel)]="newItem.heading"
+        >
+        </ng-select>
+        <p>{{newItem.heading}}</p>
+        <p>{{errorMessage}}</p>
+      </div>
+      <div class="btn-group col-sm-3">
+        <button id="single-button-new-item" type="button" class="btn btn-primary" (click)="addNewService()">Add</button>
+      </div>
+    </div>
+  </form>
+  <p *ngIf="order.totalValue > 0">{{order.totalValue}}</p>
 </div>
-
