@@ -6,3 +6,5 @@ html, body{
 span.active {
   background-color: gray;
 }
+
+main { padding-top: 70px; }

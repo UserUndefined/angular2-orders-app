@@ -20,6 +20,7 @@ import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
 import {OrderModule} from "./order";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NavbarModule} from './navbar'
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -52,7 +53,8 @@ type StoreType = {
     HttpModule,
     ROUTES,
     NgbModule,
-    OrderModule
+    OrderModule,
+    NavbarModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
