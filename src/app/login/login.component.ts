@@ -1,0 +1,35 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthenticationService } from '../shared/services/authentication.service';
+
+@Component({
+  selector: 'login',
+  templateUrl: './login.component.html',
+  styleUrls: [ './login.css' ]
+})
+export class LoginComponent {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
+  }
+
+  login(event, userName, password) {
+    event.preventDefault();
+    this.authenticationService.login(userName, password)
+      .subscribe(result => this.processLoginResult(result),
+      error => this.processLoginFailure(JSON.stringify(<any>error))
+    );
+  }
+
+  processLoginResult(result){
+    if(result === true){
+      this.router.navigate(['/home']);
+    } else {
+      this.processLoginFailure('Invalid logon');
+    }
+  }
+
+  processLoginFailure(result){
+    alert(result);
+    console.log(result);
+  }
+}

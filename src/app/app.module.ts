@@ -21,12 +21,15 @@ import { XLarge } from './home/x-large';
 import {OrderModule} from "./order";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarModule} from './navbar'
+import {LoginComponent} from './login'
+import { AuthenticationService } from './shared/services/authentication.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  appRoutingProviders
+  appRoutingProviders,
+  AuthenticationService
 ];
 
 type StoreType = {
@@ -45,7 +48,8 @@ type StoreType = {
     About,
     Home,
     NoContent,
-    XLarge
+    XLarge,
+    LoginComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
