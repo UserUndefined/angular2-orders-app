@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    console.log('ngOnInit called on component NavbarComponent');
     this.menuItems = ROUTES.filter(menuItem => menuItem.menuType !== MenuType.BRAND);
     this.brandMenu = ROUTES.filter(menuItem => menuItem.menuType === MenuType.BRAND)[0];
   }
