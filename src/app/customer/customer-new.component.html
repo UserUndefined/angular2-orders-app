@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <form class="form-horizontal" name="customerNewForm"  ng-submit="submitCustomerNew()" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerName.$invalid && !customerNewForm.newCustomerName.$pristine }">
+          <label for="newCustomerName">Name</label>
+          <input type="text" class="form-control validate" name="newCustomerName" id="newCustomerName" placeholder="Name" ng-model="customer.name" required minlength="3" maxlength="100">
+          <div class="help-block" ng-messages="customerNewForm.newCustomerName.$error"  ng-if="!customerNewForm.newCustomerName.$pristine">
+            <div ng-message="required">You must supply a company name</div>
+            <div ng-message="minlength">Company Name too short</div>
+            <div ng-message="maxlength">Company Name too long</div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerAddress1.$invalid && !customerNewForm.newCustomerAddress1.$pristine }">
+          <label for="newCustomerAddress1">Address Line 1</label>
+          <input type="text" class="form-control validate" name="newCustomerAddress1" id="newCustomerAddress1" placeholder="Address" ng-model="customer.address1" required minlength="3" maxlength="100">
+          <div class="help-block" ng-messages="customerNewForm.newCustomerAddress1.$error" ng-if="!customerNewForm.newCustomerAddress1.$pristine">
+            <div ng-message="required">You must supply a first line address</div>
+            <div ng-message="minlength">Address too short</div>
+            <div ng-message="maxlength">Address too long</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="newCustomerAddress2">Address Line 2</label>
+          <input type="text" class="form-control validate" name="newCustomerAddress2" id="newCustomerAddress2" placeholder="Address" ng-model="customer.address2">
+        </div>
+        <div class="form-group">
+          <label for="newCustomerTown">Town</label>
+          <input type="text" class="form-control validate" name="newCustomerTown" id="newCustomerTown" placeholder="Town" ng-model="customer.town">
+        </div>
+        <div class="form-group">
+          <label for="newCustomerCounty">County</label>
+          <input type="text" class="form-control validate" name="newCustomerCounty" id="newCustomerCounty" placeholder="County" ng-model="customer.county">
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerPostcode.$invalid && !customerNewForm.newCustomerPostcode.$pristine }">
+          <label for="newCustomerPostcode">Postcode</label>
+          <input type="text" class="form-control validate" name="newCustomerPostcode" id="newCustomerPostcode" placeholder="Postcode" ng-model="customer.postcode"  required minlength="5" maxlength="8">
+          <div class="help-block" ng-messages="customerNewForm.newCustomerPostcode.$error" ng-if="!customerNewForm.newCustomerPostcode.$pristine">
+            <div ng-message="required">You must supply a postcode</div>
+            <div ng-message="minlength">Postcode too short</div>
+            <div ng-message="maxlength">Postcode too long</div>
+            <div ng-message="pattern">Invalid Postcode</div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerTelephone.$invalid && !customerNewForm.newCustomerTelephone.$pristine }">
+          <label for="newCustomerTelephone">Telephone</label>
+          <input type="text" class="form-control validate" name="newCustomerTelephone" id="newCustomerTelephone" placeholder="Telephone" ng-model="customer.telephone"  required minlength="7" maxlength="15">
+          <div class="help-block" ng-messages="customerNewForm.newCustomerTelephone.$error" ng-if="!customerNewForm.newCustomerTelephone.$pristine">
+            <div ng-message="required">You must supply a telephone number</div>
+            <div ng-message="minlength">Telephone Number too short</div>
+            <div ng-message="maxlength">Telephone Number too long</div>
+            <div ng-message="pattern">Invalid Telephone</div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerEmail.$invalid && !customerNewForm.newCustomerEmail.$pristine }">
+          <label for="newCustomerEmail">Email</label>
+          <input type="text" class="form-control validate" name="newCustomerEmail" id="newCustomerEmail" placeholder="Email" ng-model="customer.email"  required minlength="6" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+          <div class="help-block" ng-messages="customerNewForm.newCustomerEmail.$error" ng-if="!customerNewForm.newCustomerEmail.$pristine">
+            <div ng-message="required">You must supply an email address</div>
+            <div ng-message="minlength">Email Address too short</div>
+            <div ng-message="maxlength">Email Address too long</div>
+            <div ng-message="pattern">Invalid email address</div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerUrl.$invalid && !customerNewForm.newCustomerUrl.$pristine }">
+          <label for="newCustomerUrl">Url</label>
+          <input type="text" class="form-control validate" name="newCustomerUrl" id="newCustomerUrl" placeholder="URL" ng-model="customer.url" minlength="7" maxlength="255">
+          <div class="help-block" ng-messages="customerNewForm.newCustomerUrl.$error" ng-if="!customerNewForm.newCustomerUrl.$pristine">
+            <div ng-message="minlength">URL too short</div>
+            <div ng-message="maxlength">URL too long</div>
+            <div ng-message="pattern">Invalid URL</div>
+          </div>
+        </div>
+        <!--div class="form-group" uib-dropdown is-open="status.isopen">
+          <label>Classification</label>
+          <ui-select ng-model="customer.category" theme="selectize" title="Select a Classification">
+            <ui-select-match placeholder="Select a Classification">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="category in categories | filter: $select.search">
+              <span ng-bind-html="category.name | highlight: $select.search"></span>
+              <small ng-bind-html="category.code | highlight: $select.search"></small>
+            </ui-select-choices>
+          </ui-select>
+        </div-->
+        <div class="form-group">
+          <label for="newCustomerNotes">Notes</label>
+          <textarea type="text" class="form-control validate" name="newCustomerNotes" id="newCustomerNotes" placeholder="Notes" ng-model="customer.notes" maxlength="1024"></textarea>
+          <div class="help-block" ng-messages="customerNewForm.newCustomerNotes.$error" ng-if="!customerNewForm.newCustomerNotes.$pristine">
+            <div ng-message="maxlength">Notes are too long</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" ng-click="submitCustomerNew()" ng-disabled="customerNewForm.$invalid">Save Customer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

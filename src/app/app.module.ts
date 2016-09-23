@@ -10,6 +10,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
  */
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES, appRoutingProviders } from './app.routes';
+
 // App is our top level component
 import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
@@ -19,18 +20,17 @@ import { About } from './about';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
 import {OrderModule} from "./order";
+import {CustomerModule} from "./customer";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarModule} from './navbar'
 import {LoginComponent} from './login'
 import { AuthenticationService } from './shared/services/authentication.service';
-//import { AuthorisationService } from './shared/services/authorisation.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   AuthenticationService,
-  //AuthorisationService,
   appRoutingProviders
 ];
 
@@ -59,6 +59,7 @@ type StoreType = {
     HttpModule,
     NgbModule,
     OrderModule,
+    CustomerModule,
     NavbarModule,
     ROUTES
   ],
