@@ -1,14 +1,21 @@
-<div class="login jumbotron center-block">
-  <h1>Login</h1>
-  <form role="form" (submit)="login($event, username.value, password.value)">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" #username class="form-control" id="username" placeholder="Username">
+<div class="container-fluid">
+  <div class="row">
+    <div class="visible-sm-* col-sm-2 col-md-3 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+      <div class="login-container">
+        <h3>Service Manager Login</h3>
+        <form role="form" (submit)="login($event, username.value, password.value)">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" #username class="form-control" id="username" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" #password class="form-control" id="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" #password class="form-control" id="password" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
+  </div>
 </div>
