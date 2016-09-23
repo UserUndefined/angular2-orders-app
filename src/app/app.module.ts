@@ -23,13 +23,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarModule} from './navbar'
 import {LoginComponent} from './login'
 import { AuthenticationService } from './shared/services/authentication.service';
+//import { AuthorisationService } from './shared/services/authorisation.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  appRoutingProviders,
-  AuthenticationService
+  AuthenticationService,
+  //AuthorisationService,
+  appRoutingProviders
 ];
 
 type StoreType = {
@@ -45,20 +47,20 @@ type StoreType = {
   bootstrap: [ App ],
   declarations: [
     App,
+    LoginComponent,
     About,
     Home,
     NoContent,
-    XLarge,
-    LoginComponent
+    XLarge
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    ROUTES,
     NgbModule,
     OrderModule,
-    NavbarModule
+    NavbarModule,
+    ROUTES
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

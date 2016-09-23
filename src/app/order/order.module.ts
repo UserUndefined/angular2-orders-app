@@ -12,6 +12,7 @@ import { orderRouting } from './order.routing';
 
 import {SelectModule} from 'angular2-select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AuthorisationService} from '../shared/services/authorisation.service';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     SelectModule,
     orderRouting,
-    NgbModule,
+    NgbModule
   ],
   providers: [
     AreaService,
     HeadingService,
-    ProductService
+    ProductService,
+    AuthorisationService
   ]
 })
 

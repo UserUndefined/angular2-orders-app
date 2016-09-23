@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 /*
  * We're loading this component asynchronously
@@ -26,7 +26,7 @@ console.log('`About` component loaded asynchronously');
     <pre>this.localState = {{ localState | json }}</pre>
   `
 })
-export class About {
+export class About implements OnInit {
   localState: any;
   constructor(public route: ActivatedRoute) {
 

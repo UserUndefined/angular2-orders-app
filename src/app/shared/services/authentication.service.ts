@@ -14,7 +14,7 @@ export class AuthenticationService {
       .map(
         response => {
           localStorage.setItem('order_app_token', response.json().accessToken);
-          localStorage.setItem('order_app_profile', response.json());
+          localStorage.setItem('order_app_profile', JSON.stringify(response.json()));
           return true;
         },
         error => {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../shared/services/authentication.service';
@@ -8,8 +8,12 @@ import { AuthenticationService } from '../shared/services/authentication.service
   templateUrl: './login.component.html',
   styleUrls: [ './login.css' ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   constructor(private router: Router, private authenticationService: AuthenticationService) {
+  }
+
+  ngOnInit(){
+    this.removeAuthenticationSettings();
   }
 
   login(event, userName, password) {
@@ -31,5 +35,10 @@ export class LoginComponent {
   processLoginFailure(result){
     alert(result);
     console.log(result);
+  }
+
+  removeAuthenticationSettings(){
+    localStorage.removeItem('order_app_token');
+    localStorage.removeItem('order_app_profile');
   }
 }
