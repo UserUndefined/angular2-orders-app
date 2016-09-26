@@ -9,6 +9,7 @@ import { customerRouting } from './customer.routing';
 import {SelectModule} from 'angular2-select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthorisationService} from '../shared/services/authorisation.service';
+import {HeadingService} from "../shared/services";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {AuthorisationService} from '../shared/services/authorisation.service';
     NgbModule
   ],
   providers: [
-    AuthorisationService
+    AuthorisationService,
+    HeadingService
   ]
 })
 

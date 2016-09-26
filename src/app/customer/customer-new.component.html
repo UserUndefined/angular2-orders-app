@@ -1,98 +1,110 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-      <form class="form-horizontal" name="customerNewForm"  ng-submit="submitCustomerNew()" novalidate>
-        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerName.$invalid && !customerNewForm.newCustomerName.$pristine }">
-          <label for="newCustomerName">Name</label>
-          <input type="text" class="form-control validate" name="newCustomerName" id="newCustomerName" placeholder="Name" ng-model="customer.name" required minlength="3" maxlength="100">
-          <div class="help-block" ng-messages="customerNewForm.newCustomerName.$error"  ng-if="!customerNewForm.newCustomerName.$pristine">
-            <div ng-message="required">You must supply a company name</div>
-            <div ng-message="minlength">Company Name too short</div>
-            <div ng-message="maxlength">Company Name too long</div>
+      <form #customerNewForm="ngForm" class="form-horizontal" (ngSubmit)="submitCustomerNew()" novalidate>
+        <div [ngClass]="{'has-danger': name.errors && (name.dirty || name.touched), 'has-success': !name.errors && (name.dirty || name.touched), 'form-group': true}">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Name" [(ngModel)]="customer.name" #name="ngModel" required minlength="3" maxlength="100" pattern="[0-9a-zA-Z()@'!&-\/]*">
+          <div *ngIf="name.errors && (name.dirty || name.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!name.errors.required">You must supply a company name</small>
+            <small class="form-control-feedback form-muted" [hidden]="!name.errors.minlength">Must be at least 3 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!name.errors.maxlength">Must not exceed 100 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!name.errors.pattern">Invalid company name</small>
           </div>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerAddress1.$invalid && !customerNewForm.newCustomerAddress1.$pristine }">
-          <label for="newCustomerAddress1">Address Line 1</label>
-          <input type="text" class="form-control validate" name="newCustomerAddress1" id="newCustomerAddress1" placeholder="Address" ng-model="customer.address1" required minlength="3" maxlength="100">
-          <div class="help-block" ng-messages="customerNewForm.newCustomerAddress1.$error" ng-if="!customerNewForm.newCustomerAddress1.$pristine">
-            <div ng-message="required">You must supply a first line address</div>
-            <div ng-message="minlength">Address too short</div>
-            <div ng-message="maxlength">Address too long</div>
+        <div [ngClass]="{'has-danger': address1.errors && (address1.dirty || address1.touched), 'has-success': !address1.errors && (address1.dirty || address1.touched), 'form-group': true}">
+          <label for="address1">Address Line 1</label>
+          <input type="text" class="form-control" name="address1" id="address1" placeholder="Address Line 1" [(ngModel)]="customer.address1" #address1="ngModel" required minlength="3" maxlength="100" pattern="[0-9a-zA-Z()@'!&-\/]*">
+          <div *ngIf="address1.errors && (address1.dirty || address1.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!address1.errors.required">You must supply first line address</small>
+            <small class="form-control-feedback form-muted" [hidden]="!address1.errors.minlength">Must be at least 3 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!address1.errors.maxlength">Must not exceed 100 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!address1.errors.pattern">Invalid address</small>
           </div>
         </div>
-        <div class="form-group">
-          <label for="newCustomerAddress2">Address Line 2</label>
-          <input type="text" class="form-control validate" name="newCustomerAddress2" id="newCustomerAddress2" placeholder="Address" ng-model="customer.address2">
-        </div>
-        <div class="form-group">
-          <label for="newCustomerTown">Town</label>
-          <input type="text" class="form-control validate" name="newCustomerTown" id="newCustomerTown" placeholder="Town" ng-model="customer.town">
-        </div>
-        <div class="form-group">
-          <label for="newCustomerCounty">County</label>
-          <input type="text" class="form-control validate" name="newCustomerCounty" id="newCustomerCounty" placeholder="County" ng-model="customer.county">
-        </div>
-        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerPostcode.$invalid && !customerNewForm.newCustomerPostcode.$pristine }">
-          <label for="newCustomerPostcode">Postcode</label>
-          <input type="text" class="form-control validate" name="newCustomerPostcode" id="newCustomerPostcode" placeholder="Postcode" ng-model="customer.postcode"  required minlength="5" maxlength="8">
-          <div class="help-block" ng-messages="customerNewForm.newCustomerPostcode.$error" ng-if="!customerNewForm.newCustomerPostcode.$pristine">
-            <div ng-message="required">You must supply a postcode</div>
-            <div ng-message="minlength">Postcode too short</div>
-            <div ng-message="maxlength">Postcode too long</div>
-            <div ng-message="pattern">Invalid Postcode</div>
+        <div [ngClass]="{'has-danger': address2.errors && (address2.dirty || address2.touched), 'has-success': !address2.errors && (address2.dirty || address2.touched), 'form-group': true}">
+          <label for="address2">Address Line 2</label>
+          <input type="text" class="form-control" name="address2" id="address2" placeholder="Address Line 2" [(ngModel)]="customer.address2" #address2="ngModel" maxlength="100" pattern="[0-9a-zA-Z()@'!&-\/]*">
+          <div *ngIf="address2.errors && (address2.dirty || address2.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!address2.errors.maxlength">Must not exceed 100 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!address2.errors.pattern">Invalid address</small>
           </div>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerTelephone.$invalid && !customerNewForm.newCustomerTelephone.$pristine }">
-          <label for="newCustomerTelephone">Telephone</label>
-          <input type="text" class="form-control validate" name="newCustomerTelephone" id="newCustomerTelephone" placeholder="Telephone" ng-model="customer.telephone"  required minlength="7" maxlength="15">
-          <div class="help-block" ng-messages="customerNewForm.newCustomerTelephone.$error" ng-if="!customerNewForm.newCustomerTelephone.$pristine">
-            <div ng-message="required">You must supply a telephone number</div>
-            <div ng-message="minlength">Telephone Number too short</div>
-            <div ng-message="maxlength">Telephone Number too long</div>
-            <div ng-message="pattern">Invalid Telephone</div>
+        <div [ngClass]="{'has-danger': town.errors && (town.dirty || town.touched), 'has-success': !town.errors && (town.dirty || town.touched), 'form-group': true}">
+          <label for="town">Town</label>
+          <input type="text" class="form-control" name="town" id="town" placeholder="Town" [(ngModel)]="customer.town" #town="ngModel" maxlength="40" pattern="[0-9a-zA-Z&-' ]*">
+          <div *ngIf="town.errors && (town.dirty || town.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!town.errors.maxlength">Must not exceed 40 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!town.errors.pattern">Invalid town</small>
           </div>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerEmail.$invalid && !customerNewForm.newCustomerEmail.$pristine }">
-          <label for="newCustomerEmail">Email</label>
-          <input type="text" class="form-control validate" name="newCustomerEmail" id="newCustomerEmail" placeholder="Email" ng-model="customer.email"  required minlength="6" maxlength="100" ng-pattern="/^.+@.+\..+$/">
-          <div class="help-block" ng-messages="customerNewForm.newCustomerEmail.$error" ng-if="!customerNewForm.newCustomerEmail.$pristine">
-            <div ng-message="required">You must supply an email address</div>
-            <div ng-message="minlength">Email Address too short</div>
-            <div ng-message="maxlength">Email Address too long</div>
-            <div ng-message="pattern">Invalid email address</div>
+        <div [ngClass]="{'has-danger': county.errors && (county.dirty || county.touched), 'has-success': !county.errors && (county.dirty || county.touched), 'form-group': true}">
+          <label for="county">County</label>
+          <input type="text" class="form-control" name="county" id="county" placeholder="County" [(ngModel)]="customer.county" #county="ngModel" maxlength="40" pattern="[0-9a-zA-Z&-' ]*">
+          <div *ngIf="county.errors && (county.dirty || county.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!county.errors.maxlength">Must not exceed 40 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!county.errors.pattern">Invalid county</small>
           </div>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : customerNewForm.newCustomerUrl.$invalid && !customerNewForm.newCustomerUrl.$pristine }">
-          <label for="newCustomerUrl">Url</label>
-          <input type="text" class="form-control validate" name="newCustomerUrl" id="newCustomerUrl" placeholder="URL" ng-model="customer.url" minlength="7" maxlength="255">
-          <div class="help-block" ng-messages="customerNewForm.newCustomerUrl.$error" ng-if="!customerNewForm.newCustomerUrl.$pristine">
-            <div ng-message="minlength">URL too short</div>
-            <div ng-message="maxlength">URL too long</div>
-            <div ng-message="pattern">Invalid URL</div>
+        <div [ngClass]="{'has-danger': postcode.errors && (postcode.dirty || postcode.touched), 'has-success': !postcode.errors && (postcode.dirty || postcode.touched), 'form-group': true}">
+          <label for="postcode">Postcode</label>
+          <input type="text" class="form-control" name="postcode" id="postcode" placeholder="Postcode" [(ngModel)]="customer.postcode" #postcode="ngModel" required minlength="5" maxlength="8" pattern="[a-zA-Z]{1,2}[0-9]{1,2}[a-zA-Z]? ?[0-9][a-zA-Z]{2}">
+          <div *ngIf="postcode.errors && (postcode.dirty || postcode.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!postcode.errors.required">You must supply a postcode</small>
+            <small class="form-control-feedback form-muted" [hidden]="!postcode.errors.minlength">Must be at least 5 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!postcode.errors.maxlength">Must not exceed 8 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!postcode.errors.pattern">Invalid postcode</small>
           </div>
         </div>
-        <!--div class="form-group" uib-dropdown is-open="status.isopen">
+        <div [ngClass]="{'has-danger': telephone.errors && (telephone.dirty || telephone.touched), 'has-success': !telephone.errors && (telephone.dirty || telephone.touched), 'form-group': true}">
+          <label for="telephone">Telephone</label>
+          <input type="text" class="form-control" name="telephone" id="telephone" placeholder="Telephone" [(ngModel)]="customer.telephone" #telephone="ngModel" required minlength="7" maxlength="15" pattern="^0[0-9]*[ ]?[0-9]*[ ]?[0-9]*">
+          <div *ngIf="telephone.errors && (telephone.dirty || telephone.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!telephone.errors.required">You must supply a telephone number</small>
+            <small class="form-control-feedback form-muted" [hidden]="!telephone.errors.minlength">Must be at least 7 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!telephone.errors.maxlength">Must not exceed 15 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!telephone.errors.pattern">Invalid telephone number</small>
+          </div>
+        </div>
+        <div [ngClass]="{'has-danger': email.errors && (email.dirty || email.touched), 'has-success': !email.errors && (email.dirty || email.touched), 'form-group': true}">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" [(ngModel)]="customer.email" #email="ngModel" required minlength="6" maxlength="100" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+          <div *ngIf="email.errors && (email.dirty || email.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!email.errors.required">You must supply an email</small>
+            <small class="form-control-feedback form-muted" [hidden]="!email.errors.minlength">Must be at least 6 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!email.errors.maxlength">Must not exceed 100 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!email.errors.pattern">Invalid email</small>
+          </div>
+        </div>
+        <div [ngClass]="{'has-danger': url.errors && (url.dirty || url.touched), 'has-success': !url.errors && (url.dirty || url.touched), 'form-group': true}">
+          <label for="url">URL</label>
+          <input type="text" class="form-control" name="url" id="url" placeholder="URL" [(ngModel)]="customer.url" #url="ngModel" required minlength="7" maxlength="255" pattern="^(www.)[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$">
+          <div *ngIf="url.errors && (url.dirty || url.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!url.errors.required">You must supply a URL</small>
+            <small class="form-control-feedback form-muted" [hidden]="!url.errors.minlength">Must be at least 7 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!url.errors.maxlength">Must not exceed 255 characters</small>
+            <small class="form-control-feedback form-muted" [hidden]="!url.errors.pattern">Invalid URL</small>
+          </div>
+        </div>
+        <div [ngClass]="{'has-danger': classification.errors && (classification.dirty || classification.touched), 'has-success': !classification.errors && (classification.dirty || classification.touched), 'form-group': true}">
           <label>Classification</label>
-          <ui-select ng-model="customer.category" theme="selectize" title="Select a Classification">
-            <ui-select-match placeholder="Select a Classification">{{$select.selected.name}}</ui-select-match>
-            <ui-select-choices repeat="category in categories | filter: $select.search">
-              <span ng-bind-html="category.name | highlight: $select.search"></span>
-              <small ng-bind-html="category.code | highlight: $select.search"></small>
-            </ui-select-choices>
-          </ui-select>
-        </div-->
-        <div class="form-group">
-          <label for="newCustomerNotes">Notes</label>
-          <textarea type="text" class="form-control validate" name="newCustomerNotes" id="newCustomerNotes" placeholder="Notes" ng-model="customer.notes" maxlength="1024"></textarea>
-          <div class="help-block" ng-messages="customerNewForm.newCustomerNotes.$error" ng-if="!customerNewForm.newCustomerNotes.$pristine">
-            <div ng-message="maxlength">Notes are too long</div>
+          <ng-select
+            [options]="headings"
+            placeholder="Select a classification"
+            name="headingSelect"
+            [(ngModel)]="customer.classification"
+            required
+            #classification="ngModel"
+          >
+          </ng-select>
+          <div *ngIf="classification.errors && (classification.dirty || classification.touched)">
+            <small class="form-control-feedback form-muted" [hidden]="!classification.errors.required">You must select a classification</small>
           </div>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" ng-click="submitCustomerNew()" ng-disabled="customerNewForm.$invalid">Save Customer</button>
+          <button class="btn btn-primary" (click)="submitCustomerNew()" [disabled]="!customerNewForm.form.valid">Save Customer</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
