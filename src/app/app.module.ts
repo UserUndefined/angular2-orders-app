@@ -15,8 +15,7 @@ import { ROUTES, appRoutingProviders } from './app.routes';
 import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InteralStateType } from './app.service';
-import { Home } from './home';
-import { Calendar } from './home/calendar';
+import { HomeModule } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
@@ -26,16 +25,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarModule} from './navbar'
 import {LoginComponent} from './login'
 import { AuthenticationService } from './shared/services/authentication.service';
-import { BaFullCalendar } from './shared/components';
-import {CalendarService} from './home/calendar/calendar.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   AuthenticationService,
-  appRoutingProviders,
-  CalendarService
+  appRoutingProviders
 ];
 
 type StoreType = {
@@ -53,11 +49,8 @@ type StoreType = {
     App,
     LoginComponent,
     About,
-    Home,
     NoContent,
-    XLarge,
-    BaFullCalendar,
-    Calendar
+    XLarge
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -65,6 +58,7 @@ type StoreType = {
     HttpModule,
     NgbModule,
     OrderModule,
+    HomeModule,
     CustomerModule,
     NavbarModule,
     ROUTES
