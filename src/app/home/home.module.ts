@@ -5,17 +5,11 @@ import {FormsModule} from '@angular/forms'
 import {Home} from "./home.component";
 import { homeRouting } from './home.routing';
 
-import { Calendar } from './calendar'
-import { BaFullCalendar } from '../shared/components';
-import {CalendarService} from './calendar/calendar.service';
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    Home,
-    Calendar,
-    BaFullCalendar
+    Home
   ],
   imports: [
     CommonModule,
@@ -24,7 +18,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModule
   ],
   providers: [
-    CalendarService
   ]
 })
 export class HomeModule{}
